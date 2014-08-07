@@ -1,0 +1,17 @@
+﻿#main { margin-top: 50px; margin-bottom: 20px; }
+
+body .syntaxhighlighter { overflow-y: hidden !important; overflow-x: auto !important; }
+
+.code-cut { margin: 10px 0; }
+    .code-cut pre, .code-cut .syntaxhighlighter { display: none; }
+    .code-cut a { text-decoration: none; border-bottom: 1px dotted; }
+/* CUSTOM NAVBAR COLORS */
+.navbar-grid { background-color: #4888C2 !important; }
+    .navbar-grid .navbar-toggle:hover { background-color: #4888C2; }
+    .navbar-grid .navbar-brand, .navbar-grid .navbar-brand:hover { color: white; }
+    .navbar-grid .navbar-nav > li > a { color: #e1f1ff; }
+    .navbar-grid .navbar-nav > .active > a, .navbar-grid .navbar-nav > .active > a:hover { color: #FFF; background-color: #3573AC; }
+        .navbar-grid .navbar-nav > li > a:hover { color: #FFF; }
+/* AJAX PAGER */
+.grid-ajax-pager a { display: block; padding: 8px 10px; text-decoration: none; text-align: center; border-top: 1px solid #DBDBDB; border-bottom: 1px solid #DBDBDB; }
+    .grid-ajax-pager a:hover { background: #f9f9f9; }

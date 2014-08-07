@@ -1,0 +1,16 @@
+﻿- Grid.Mvc 3.0.0
+	Added multiple columns filtering
+	Added support of multiple filters per one column
+	Extended GridRenderOptions: selectable option and allow multiple filters option
+	Updated to 3.0 bootstrap version
+	Support of overriding header renderers
+	Minifing own grid css styles by using default bootstrap styles
+	Passing some filter widget data
+	Migrate to another date picker control, see https://github.com/bukharin/bootstrap-datepicker/blob/master/LICENSE
+	New IGridPager model. Support for custom grid pager rendering templates.
+	Added Css method for specifing custome css classes on the column
+	Added new method 'Named' for specifing grid client name
+	Modify sample app layout for responsive design
+	Client side: added preventing of grid row selection (change client capability, instead of row, calback function retrieve Event argument. To access to the row use e.row).
+	Support for System.ComponentModel.DataAnnotations: DisplayAttribute, DisplayFormatAttribute, MetadataTypeAttribute
+	Improve header rendering on mobile devices

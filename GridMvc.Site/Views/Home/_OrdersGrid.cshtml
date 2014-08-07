@@ -1,0 +1,57 @@
+﻿@using GridMvc.Html
+@using GridMvc.Site.Models
+@using GridMvc.Sorting
+@model GridMvc.Site.Models.Grids.OrdersGrid
+@helper CustomRenderingOfColumn(Order order)
+{
+    if (order.Customer.IsVip)
+    {
+    <text>Yes</text>
+    }
+    else
+    {
+    <text>No</text>
+    }
+}
+
+@Html.Grid(Model).Named("ordersGrid").Columns(columns =>
+    {
+        /* Adding not mapped column, that renders body, using inline Razor html helper */
+        columns.Add()
+                .Encoded(false)
+                .Sanitized(false)
+                .SetWidth(30)
+                .Css("hidden-xs") //hide on phones
+                .RenderValueAs(o =>
+                    @<b>
+                        @Html.ActionLink("Edit", "Edit", new { id = o.OrderID }, new { @class = "modal_link" })
+                    </b>);
+
+        /* Adding "OrderID" column: */
+
+        columns.Add(o => o.OrderID)
+               .Titled("Number")
+               .SetWidth(100);
+
+        /* Adding "OrderDate" column: */
+        columns.Add(o => o.OrderDate, "OrderCustomDate")
+                .Titled("Date")
+                .SortInitialDirection(GridSortDirection.Descending)
+                .Format("{0:dd/MM/yyyy}")
+                .SetWidth(110);
+        //.SetFilterWidgetType(string.Empty, new { format = "dd.mm.yyyy" })
+        /* Adding "CompanyName" column: */
+        columns.Add(o => o.Customer.CompanyName)
+               .Titled("Company")
+               .SetWidth(250)
+               .ThenSortByDescending(o => o.OrderID)
+               .SetFilterWidgetType("CustomCompanyNameFilterWidget");
+        /* Adding "Vip customer" column: */
+        columns.Add(o => o.Customer.IsVip)
+                .Titled("Is Vip")
+                .SetWidth(70)
+                .Css("hidden-xs") //hide on phones
+                .RenderValueAs(o => CustomRenderingOfColumn(o));
+
+    }).SetRowCssClasses(item => item.Customer.IsVip ? "success" : string.Empty).WithPaging(15).Sortable().Filterable().WithMultipleFilters()
+

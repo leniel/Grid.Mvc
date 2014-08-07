@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{742CA5DD-16DB-464A-A267-A1F4E422733B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GridMvc</RootNamespace>
+    <AssemblyName>GridMvc</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Columns\DefaultColumnBuilder.cs" />
+    <Compile Include="Columns\GridColumnBase.cs" />
+    <Compile Include="Columns\GridColumnCollection.cs" />
+    <Compile Include="Columns\HiddenGridColumn.cs" />
+    <Compile Include="Columns\IColumnBuilder.cs" />
+    <Compile Include="Columns\IGridColumnCollection.cs" />
+    <Compile Include="DataAnnotations\GridAnnotaionsProvider.cs" />
+    <Compile Include="DataAnnotations\GridTableAttribute.cs" />
+    <Compile Include="DataAnnotations\GridColumnAttribute.cs" />
+    <Compile Include="DataAnnotations\GridHiddenColumnAttribute.cs" />
+    <Compile Include="DataAnnotations\NotMappedColumnAttribute.cs" />
+    <Compile Include="Filtering\DefaultColumnFilter.cs" />
+    <Compile Include="Filtering\ColumnFilterValue.cs" />
+    <Compile Include="Filtering\IFilterColumnCollection.cs" />
+    <Compile Include="Filtering\Types\BooleanFilterType.cs" />
+    <Compile Include="Filtering\Types\ByteFilterType.cs" />
+    <Compile Include="Filtering\Types\EnumFilterType.cs" />
+    <Compile Include="Filtering\Types\FilterTypeBase.cs" />
+    <Compile Include="Filtering\Types\Int16FilterType.cs" />
+    <Compile Include="Filtering\Types\Int64FilterType.cs" />
+    <Compile Include="Filtering\Types\DecimalFilterType.cs" />
+    <Compile Include="Filtering\Types\SingleFilterType.cs" />
+    <Compile Include="Filtering\Types\DoubleFilterType.cs" />
+    <Compile Include="Filtering\Types\DateTimeFilterType.cs" />
+    <Compile Include="Filtering\Types\Int32FilterType.cs" />
+    <Compile Include="Filtering\Types\FilterTypeResolver.cs" />
+    <Compile Include="Filtering\Types\IFilterType.cs" />
+    <Compile Include="Filtering\Types\TextFilterType.cs" />
+    <Compile Include="Filtering\FilterGridItemsProcessor.cs" />
+    <Compile Include="Filtering\GridFilterType.cs" />
+    <Compile Include="Filtering\IColumnFilter.cs" />
+    <Compile Include="Filtering\IGridFilterSettings.cs" />
+    <Compile Include="Filtering\QueryStringFilterSettings.cs" />
+    <Compile Include="Filtering\FilterColumnHeaderRenderer.cs" />
+    <Compile Include="Filtering\Types\UInt16FilterType.cs" />
+    <Compile Include="Filtering\Types\UInt32FilterType.cs" />
+    <Compile Include="Filtering\Types\UInt64FilterType.cs" />
+    <Compile Include="GridHiddenHeaderRenderer.cs" />
+    <Compile Include="GridBase.cs" />
+    <Compile Include="Html\GridExtensions.cs" />
+    <Compile Include="Html\GridHtmlOptions.cs" />
+    <Compile Include="Html\GridRenderOptions.cs" />
+    <Compile Include="Html\HtmlGrid.cs" />
+    <Compile Include="Html\IGridHtmlOptions.cs" />
+    <Compile Include="DataAnnotations\IGridAnnotaionsProvider.cs" />
+    <Compile Include="IGridColumnHeaderRenderer.cs" />
+    <Compile Include="ISanitizer.cs" />
+    <Compile Include="Pagination\GridPager.cs" />
+    <Compile Include="Resources\Strings.it.Designer.cs">
+      <DependentUpon>Strings.it.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Strings.es.Designer.cs">
+      <DependentUpon>Strings.es.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Strings.de.Designer.cs">
+      <DependentUpon>Strings.de.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Strings.fr.Designer.cs">
+      <DependentUpon>Strings.fr.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Strings.ru.Designer.cs">
+      <DependentUpon>Strings.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Sanitizer.cs" />
+    <Compile Include="Sorting\OrderByGridOrderer.cs" />
+    <Compile Include="Sorting\IColumnOrderer.cs" />
+    <Compile Include="Sorting\ThenByColumnOrderer.cs" />
+    <Compile Include="Utility\JsonHelper.cs" />
+    <Compile Include="Utility\PropertiesHelper.cs" />
+    <Compile Include="Columns\GridColumn.cs" />
+    <Compile Include="Grid.cs" />
+    <Compile Include="GridCell.cs" />
+    <Compile Include="GridCellRenderer.cs" />
+    <Compile Include="GridHeaderRenderer.cs" />
+    <Compile Include="GridHiddenCellRenderer.cs" />
+    <Compile Include="Sorting\GridSortDirection.cs" />
+    <Compile Include="GridStyledRenderer.cs" />
+    <Compile Include="IGrid.cs" />
+    <Compile Include="IGridCell.cs" />
+    <Compile Include="Columns\IGridColumn.cs" />
+    <Compile Include="IGridCellRenderer.cs" />
+    <Compile Include="IGridItemsProcessor.cs" />
+    <Compile Include="Pagination\IGridPager.cs" />
+    <Compile Include="Pagination\PagerGridItemsProcessor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="IGridSettingsProvider.cs" />
+    <Compile Include="Sorting\IGridSortSettings.cs" />
+    <Compile Include="QueryStringGridSettingsProvider.cs" />
+    <Compile Include="Sorting\SortColumnHeaderRenderer.cs" />
+    <Compile Include="Sorting\QueryStringSortSettings.cs" />
+    <Compile Include="Sorting\SortGridItemsProcessor.cs" />
+    <Compile Include="Utility\CustomQueryStringBuilder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Strings.it.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.it.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.es.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.de.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.de.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.fr.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.fr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
