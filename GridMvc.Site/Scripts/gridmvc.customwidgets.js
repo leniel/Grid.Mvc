@@ -10,6 +10,7 @@
 *
 * For more documentation see: http://gridmvc.codeplex.com/documentation
 */
+//Updated by Aman Sharma (http://HarvestingClouds.com)
 
 /***
 * CustomersFilterWidget - Provides filter user interface for customer name column in this project
@@ -58,8 +59,10 @@ function CustomersFilterWidget() {
     this.renderWidget = function () {
         var html = '<p><i>This is custom filter widget demo.</i></p>\
                     <p>Select customer to filter:</p>\
-                    <select style="width:250px;" class="grid-filter-type customerslist form-control">\
-                    </select>';
+                    <div id="cutomerlistDivID" style="width:250px;height:250px;overflow-y:auto;" class="grid-filter-type customerslist form-control"></div><br />\
+                    <div class="grid-filter-buttons">\
+                        <button type="button" class="btn btn-primary grid-apply" >' + this.lang.applyFilterButtonText + '</button>\
+                    </div>';
         this.container.append(html);
     };
     /***
@@ -77,7 +80,7 @@ function CustomersFilterWidget() {
     this.fillCustomers = function (items) {
         var customerList = this.container.find(".customerslist");
         for (var i = 0; i < items.length; i++) {
-            customerList.append('<option ' + (items[i] == this.value.filterValue ? 'selected="selected"' : '') + ' value="' + items[i] + '">' + items[i] + '</option>');
+            customerList.append('<input type = "checkbox"' + (this.value.filterValue.indexOf(items[i]) > -1 ? 'checked="checked"' : '') + ' value="' + items[i] + '">' + items[i] + '</input><br />');
         }
     };
     /***
@@ -86,13 +89,44 @@ function CustomersFilterWidget() {
     this.registerEvents = function () {
         //get list with customers
         var customerList = this.container.find(".customerslist");
+        //get apply button from:
+        var applyBtn = this.container.find(".grid-apply");
         //save current context:
         var $context = this;
         //register onclick event handler
-        customerList.change(function () {
+        applyBtn.click(function () {
+            //get selected filter type:
+            //var type = $context.container.find(".grid-filter-type").val();
+            var type = 1;
+            //get filter value:
+            //var value = $context.container.find(".grid-filter-input").val();
+            var value = "";
+            
+            $('.customerslist input:checked').each(function (index, element) {
+                if (index == 0) {
+                    value += element.value;
+                }
+                else {
+                    value += "|" + element.value;
+                }
+            });
+
+
             //invoke callback with selected filter values:
-            var values = [{ filterValue: $(this).val(), filterType: 1 /* Equals */ }];
-            $context.cb(values);
+            var filterValues = [{ filterType: type, filterValue: value }];
+            $context.cb(filterValues);
+        });
+        //register onclick event handler
+        //customerList.change(function () {
+        ////invoke callback with selected filter values:
+        //var values = [{ filterValue: $(this).val(), filterType: 1 /* Equals */ }];
+        //$context.cb(values);
+        //});
+
+        //register onEnter event for filter text box:
+        this.container.find(".grid-filter-input").keyup(function (event) {
+            if (event.keyCode == 13) { applyBtn.click(); }
+            if (event.keyCode == 27) { GridMvc.closeOpenedPopups(); }
         });
     };
 

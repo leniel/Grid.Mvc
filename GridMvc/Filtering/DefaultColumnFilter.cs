@@ -52,9 +52,24 @@ namespace GridMvc.Filtering
                                        ? Expression.Property(_expression.Body, pi.PropertyType.GetProperty("Value"))
                                        : _expression.Body;
 
-            Expression binaryExpression = filterType.GetFilterExpression(firstExpr, value.FilterValue, value.FilterType);
-            if (binaryExpression == null) return null;
+            Expression binaryExpression;
+            if (value.FilterValue.Contains("|"))
+            {
+                var filterValues = value.FilterValue.Split('|');
+                binaryExpression = filterType.GetFilterExpression(firstExpr, filterValues[0], value.FilterType);
 
+                for (int i = 1; i < filterValues.Count(); i++)
+                {
+                    Expression tempExpr = filterType.GetFilterExpression(firstExpr, filterValues[i], value.FilterType);
+                    binaryExpression = Expression.Or(tempExpr, binaryExpression);
+                }
+            }
+            else
+            {
+                binaryExpression = filterType.GetFilterExpression(firstExpr, value.FilterValue, value.FilterType);
+            }
+
+            if (binaryExpression == null) return null;
             if (targetType == typeof (string))
             {
                 //check for strings, they may be NULL
